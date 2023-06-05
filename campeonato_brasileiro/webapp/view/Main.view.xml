@@ -1,0 +1,88 @@
+<mvc:View xmlns:tnt="sap.tnt" controllerName="campeonatobrasileiro.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:c="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <ObjectHeader
+            title="{ModeloDadosGerais>/nome_popular}"
+            number="{ModeloDadosGerais>/rodada_atual/rodada}"
+            numberUnit="Rodada"
+        >
+        </ObjectHeader>
+        <IconTabBar>
+            <items>
+                <IconTabFilter 
+                text="Classificação" 
+                key="classificacao"
+                icon="sap-icon://competitor">
+                <!-- tabela -->
+                    <Table items="{ModeloClassificacao>/Classificacao}" headerText="Situação: {CampeonatoModel>/campeonato/status}">
+                        <columns>
+                            <Column>
+                                <Text text="Posição"></Text>
+                            </Column>
+                            <Column>
+                                <Text text=""></Text>
+                            </Column>
+                            <Column>
+                                <Text text="Time"></Text>
+                            </Column>
+                            <Column>
+                                <Text text="Pts"></Text>
+                            </Column>
+                            <Column>
+                                <Text text="PJ"></Text>
+                            </Column>
+                            <Column>
+                                <Text text="VIT"></Text>
+                            </Column>
+                            <Column>
+                                <Text text="E"></Text>
+                            </Column>
+                            <Column>
+                                <Text text="DER"></Text>
+                            </Column>
+                            <Column>
+                                <Text text="GM"></Text>
+                            </Column>
+                            <Column>
+                                <Text text="GC"></Text>
+                            </Column>
+                            <Column>
+                                <Text text="SG"></Text>
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <!-- 1ª coluna -->
+                                    <Text text="{ModeloClassificacao>posicao}"></Text>
+                                    <Image src="{ModeloClassificacao>time/escudo}" width="45%"></Image>
+                                    <Text text="{ModeloClassificacao>time/nome_popular}"></Text>
+                                    <Text text="{ModeloClassificacao>pontos}"></Text>
+                                    <Text text="{ModeloClassificacao>jogos}"></Text>
+                                    <Text text="{ModeloClassificacao>vitorias}"></Text>
+                                    <Text text="{ModeloClassificacao>empates}"></Text>
+                                    <Text text="{ModeloClassificacao>derrotas}"></Text>
+                                    <Text text="{ModeloClassificacao>gols_pro}"></Text>
+                                    <Text text="{ModeloClassificacao>gols_contra}"></Text>
+                                    <Text text="{ModeloClassificacao>saldo_gols}"></Text>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </IconTabFilter>
+                <IconTabFilter text="Partidas" 
+                icon="sap-icon://soccer"
+                key="partidas">
+
+            <!-- para funcionar colocar propriedade xmlns:c="sap.ui.core" dentro da tag view-->
+            <!-- ver linha 3-->
+                <c:Fragment fragmentName="campeonatobrasileiro.view.partidas" type="XML" />
+
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+    </Page>
+</mvc:View>
